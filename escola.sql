@@ -1,17 +1,28 @@
-CREATE DATABASE escola;
-
-USE escola;
-
-CREATE TABLE alunos (
-    id_aluno INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100),
-    idade INT,
-    turma VARCHAR(20)
+drop database carrosdb;
+create database carrosdb;
+use carrosdb;
+create table clientes(
+    id int primary key auto_increment,
+    nome varchar(100)not null
 );
 
-INSERT INTO alunos (nome, idade, turma)
-VALUES
-('Ana', 15, '1A'),
-('Carlos', 16, '2B');
+create table produtos(
+    id int primary key auto_increment,
+    nome varchar(100) not null,
+    pco float
+);
 
-SELECT * FROM alunos;
+create table vendas(
+    id int primary key auto_increment,
+    cli_id int,
+    prod_id int
+);
+
+ALTER TABLE vendas ADD CONSTRAINT fk_cli_id FOREIGN KEY (cli_id) REFERENCES clientes(id);
+
+insert into clientes (nome) value ('Lionel Messi');
+insert into produtos (nome) value ('Uno');
+insert into vendas (cli_id, prod_id) values (1,1);
+insert into vendas (cli_id, prod_id) values (2,2);
+
+select * from vendas;
