@@ -19,6 +19,7 @@ create table vendas(
 );
 
 ALTER TABLE vendas ADD CONSTRAINT fk_cli_id FOREIGN KEY (cli_id) REFERENCES clientes(id);
+ALTER TABLE produtos ADD CONSTRAINT fk_prod_id FOREIGN KEY (prod_id_id) REFERENCES produtos(id);
 
 insert into clientes (nome) value ('Lionel Messi');
 insert into produtos (nome) value ('Uno');
